@@ -86,6 +86,26 @@ shutdown /r /t 0  # reboot
 
 ## Installation
 
+### First-Time Setup: Unblock the Scripts
+
+If you downloaded these scripts from the internet, Windows will block them by default. You must unblock them first:
+
+```powershell
+# Navigate to the folder containing the scripts
+cd C:\path\to\sessionsave
+
+# Unblock all PowerShell scripts
+Get-ChildItem *.ps1 | Unblock-File
+
+# Or unblock individually
+Unblock-File .\SessionManager.ps1
+Unblock-File .\SaveAndShutdown.ps1
+Unblock-File .\SaveAndReboot.ps1
+Unblock-File .\RestoreSession.ps1
+```
+
+**Alternative**: Right-click each `.ps1` file → Properties → Check "Unblock" → OK
+
 ### Option 1: Keep in One Folder (Recommended)
 ```powershell
 # Create scripts folder

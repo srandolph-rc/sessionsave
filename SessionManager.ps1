@@ -57,7 +57,9 @@ $skipProcesses = @(
 
 #region Windows API Definitions
 
-Add-Type @"
+# Only add the type if it doesn't already exist (prevents error when running multiple times)
+if (-not ([System.Management.Automation.PSTypeName]'User32').Type) {
+    Add-Type @"
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -106,6 +108,7 @@ public struct RECT {
     public int Bottom;
 }
 "@
+}
 
 #endregion
 
